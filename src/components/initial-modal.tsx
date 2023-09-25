@@ -24,7 +24,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { UserButton } from "@clerk/nextjs";
-import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "./mode-toggle";
+import { FileUpload } from "./file-upload";
 
 const formSchema = z.object({
   name: z
@@ -85,6 +86,23 @@ export const InitialModal = ({ name }: { name?: string }) => {
                   <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Server Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="imageUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Server Image</FormLabel>
+                  <FormControl>
+                    <FileUpload
+                      onChange={field.onChange}
+                      value={field.value}
+                      endpoint="serverImage"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
