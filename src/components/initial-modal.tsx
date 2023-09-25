@@ -69,7 +69,14 @@ export const InitialModal = ({ name }: { name?: string }) => {
   return (
     <Dialog defaultOpen>
       <div className="w-full h-screen flex flex-col justify-center items-center gap-4">
-        <UserButton afterSignOutUrl="/" />
+        <UserButton
+          afterSignOutUrl="/"
+          appearance={{
+            elements: {
+              avatarBox: "h-[48px] w-[48px]",
+            },
+          }}
+        />
         <span>{name}</span>
         <div className="flex gap-2">
           <DialogTrigger asChild>
