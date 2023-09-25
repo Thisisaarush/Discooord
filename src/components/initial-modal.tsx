@@ -70,10 +70,9 @@ export const InitialModal = ({ name }: { name?: string }) => {
       </div>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create Your Channel / Server</DialogTitle>
+          <DialogTitle>Create Your Server</DialogTitle>
           <DialogDescription>
-            Give your channel / server an identity with a name and an image. You
-            can change both later.
+            Give your server an identity with a name and an image.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -87,9 +86,6 @@ export const InitialModal = ({ name }: { name?: string }) => {
                   <FormControl>
                     <Input placeholder="Server Name" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public server name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
