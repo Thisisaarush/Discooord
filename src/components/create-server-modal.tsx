@@ -1,17 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import { useForm } from "react-hook-form";
+
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -21,12 +20,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { UserButton } from "@clerk/nextjs";
-import { ModeToggle } from "./mode-toggle";
-import { FileUpload } from "./file-upload";
+import { Button } from "@/components/ui/button";
+import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
+import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
   name: z
@@ -36,16 +34,13 @@ const formSchema = z.object({
   imageUrl: z.string().min(1, { message: "Server image is required" }),
 });
 
-export const InitialModal = ({ name }: { name?: string }) => {
+export const CreateServerModal = () => {
+  const { isOpen, onClose, type } = useModal();
   const router = useRouter();
-  // hydration error
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isModalOpen = isOpen && type === "createServer";
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -56,38 +51,25 @@ export const InitialModal = ({ name }: { name?: string }) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post("/api/servers", values);
+
       form.reset();
       router.refresh();
-      window.location.reload();
+      onClose();
     } catch (error) {
       console.log(error);
     }
   };
 
-  if (!isMounted) return null;
+  const handleClose = () => {
+    form.reset();
+    onClose();
+  };
 
   return (
-    <Dialog defaultOpen>
-      <div className="w-full h-screen flex flex-col justify-center items-center gap-4">
-        <UserButton
-          afterSignOutUrl="/"
-          appearance={{
-            elements: {
-              avatarBox: "h-[48px] w-[48px]",
-            },
-          }}
-        />
-        <span>{name}</span>
-        <div className="flex gap-2">
-          <DialogTrigger asChild>
-            <Button variant="outline">Create Your First Server</Button>
-          </DialogTrigger>
-          <ModeToggle />
-        </div>
-      </div>
+    <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create a Server</DialogTitle>
+          <DialogTitle>Create a new Server</DialogTitle>
           <DialogDescription>
             Give your server an identity with a name and an image.
           </DialogDescription>
