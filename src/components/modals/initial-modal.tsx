@@ -10,7 +10,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -31,8 +30,8 @@ import { UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "../mode-toggle";
 
 const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "Server name is required.",
+  name: z.string().min(3, {
+    message: "Server name should contain atleast 3 characters.",
   }),
   imageUrl: z.string().min(1, {
     message: "Server image is required.",
