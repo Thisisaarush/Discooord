@@ -21,7 +21,7 @@ const SetupPage = async () => {
     return redirect(`/servers/${server.id}`);
   }
 
-  return <InitialModal />;
+  return <InitialModal name={profile?.name || profile?.email} />;
 };
 
 export default SetupPage;

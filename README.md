@@ -1,6 +1,8 @@
-# Discoord | Discord Clone
+# Discoord | A Discord Clone
 
-### Create `.env.local` file at root of your project
+## Prerequisites
+
+### Rename `.env.example` to `.env.local`
 
 ```js
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
@@ -27,11 +29,11 @@ npx prisma db push
 ## Start the App
 
 ```bash
-bun dev
-# or
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
+# or
+bun dev
 ```
