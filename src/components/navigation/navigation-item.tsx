@@ -42,6 +42,8 @@ export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
             src={imageUrl}
             alt="Channel"
             style={{ objectFit: "cover" }}
+            quality={75}
+            sizes="(max-width: 768px) 100vw"
           />
         </div>
       </button>
