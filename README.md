@@ -38,3 +38,6 @@ pnpm dev
 # or
 bun dev
 ```
+## Known issues
+
+1. Issue with dialog component from [shadcn-ui/dialog](https://github.com/shadcn-ui/ui/issues/1595) - Screen Freeze after dialog close
