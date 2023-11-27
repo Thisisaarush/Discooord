@@ -20,6 +20,8 @@
 - ORM using Prisma
 - Light / Dark mode
 
+⭐ **Added Cron to keep free-tier planetscale database alive**
+
 ## Screenshots
 
 ### Channels - Text, Audio, Video
