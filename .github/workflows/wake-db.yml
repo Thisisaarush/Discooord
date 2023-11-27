@@ -1,0 +1,13 @@
+name: Wake up planetscale db
+on:
+  schedule:
+    - cron: "0 0 * * MON"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Keep Database alive due to free tier
+        run: |
+          curl --request PUT \
+            --url '${{ secrets.APP_URL }}/api/wake-db' \
+            --header 'x-wake-db-api-secret: ${{ secrets.WAKE_DB_API_SECRET }}'

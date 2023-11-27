@@ -152,3 +152,8 @@ model DirectMessage {
   @@index([memberId])
   @@index([conversationId])
 }
+
+model WakeDb {
+  id String @id @default(uuid())
+  wakeCount Int? @default(0)
+}
