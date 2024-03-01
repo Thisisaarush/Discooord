@@ -6,7 +6,7 @@
 - 1:1 conversation between members with screen sharing
 - 1:1 video calls between members with screen sharing
 - Send attachments as messages using UploadThing
-- Delete & Edit messages in real time for all users
+- Delete & Edit messages in real-time for all users
 - Create Text, Audio and Video call Channels
 - Member management (Kick, Role change Guest / Moderator)
 - Unique invite link generation & full working invite system
@@ -21,6 +21,7 @@
 - Light / Dark mode
 
 ⭐ **Added Cron to keep free-tier planetscale database alive**
+⚠️ **Update - Planetscale no longer have free-tier databases in India 😁**
 
 ## Screenshots
 
