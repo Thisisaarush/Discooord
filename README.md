@@ -16,12 +16,12 @@
 - Full responsivity and mobile UI
 - Websocket fallback: Polling with alerts
 - Authentication with Clerk
-- MySQL database using Planetscale
+- MySQL database using Planetscale -> Switched to Postgresql (Supabase)
 - ORM using Prisma
 - Light / Dark mode
 
 ⭐ **Added Cron to keep free-tier planetscale database alive**
-⚠️ **Update - Planetscale no longer have free-tier databases in India 😁**
+⚠️ **Update - Planetscale no longer have free-tier databases in India so updated to use Supabase 😁**
 
 ## Screenshots
 
@@ -63,7 +63,7 @@ NEXT_PUBLIC_LIVEKIT_URL=
 NEXT_PUBLIC_SITE_URL=
 ```
 
-### Setup prisma for Planetscale mySQL database
+### Setup prisma for Planetscale/Supabase database
 
 ```shell
 npx prisma generate
